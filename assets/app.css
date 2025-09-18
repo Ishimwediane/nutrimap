@@ -1,0 +1,54 @@
+/* Collapsible sidebar */
+.sidebar {
+    position: fixed;
+    top: 50px;             /* space from top */
+    left: 20px;            /* space from left */
+    width: 60px;           /* collapsed width (icons only) */
+    background-color: #273943;
+    padding: 10px 5px;
+    border-radius: 10px;
+    color: white;
+    transition: width 0.3s;  /* smooth expand */
+    overflow: hidden;        /* hide text when collapsed */
+}
+
+/* Expand on hover */
+.sidebar:hover {
+    width: 200px;           /* full width on hover */
+    padding: 10px 15px;
+}
+
+/* Links in sidebar */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 20px 10px;
+    white-space: nowrap; /* prevent text wrapping */
+}
+
+/* Link hover */
+.sidebar a:hover {
+    background-color: #3749AB;
+}
+
+/* Icon spacing */
+.sidebar a i {
+    min-width: 20px;      /* keep icon aligned */
+    font-size: 18px;
+    margin-right: 30px;
+}
+
+/* Initially hide text */
+.sidebar a span {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show text when sidebar is hovered */
+.sidebar:hover a span {
+    opacity: 1;
+}

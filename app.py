@@ -1,29 +1,39 @@
-# app.py
 import dash
-from dash import dcc, html
-import plotly.express as px
-import pandas as pd
+from dash import html
 
-# Dummy data for testing frontend
-df = pd.DataFrame({
-    "Year": [2015, 2016, 2017, 2018, 2019],
-    "Value": [10, 20, 15, 25, 30]
-})
-
-# Create Dash app
 app = dash.Dash(__name__)
+#font awesome
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+ <head>
+    {%metas%}
+    <title>{%title%}</title>
+    {%favicon%}
+    {%css%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body>
+    {%app_entry%}
+    <footer>
+        {%config%}
+        {%scripts%}
+        {%renderer%}
+    </footer>
+  </body>
+</html>
+'''
 
-# Layout: what the user sees
-app.layout = html.Div([
-    html.H1("My First Dashboard", style={"textAlign": "center"}),
-
-    # Graph
-    dcc.Graph(
-        id="test-graph",
-        figure=px.line(df, x="Year", y="Value", title="Dummy Data Trend")
-    )
-])
-
-# Run the app
+sidebar = html.Div(
+    [
+        html.H2("dashboard",className="mb-4"),
+        html.A([html.I(className="fas fa-home"),"Home"],href="#"),
+        html.A([html.I(className="fas fa-chart-bar"),"Analytics"],href="#"),
+        html.A([html.I(className="fas fa-cog"),"Settings"],href="#"),
+        
+    ],
+    className="sidebar"
+)
+app.layout = html.Div([sidebar])
 if __name__ == "__main__":
     app.run(debug=True)
