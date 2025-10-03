@@ -209,7 +209,7 @@ charts_section = html.Div([
                 html.H3("Stunting Rate by Province", style={'margin': '0 0 15px 0', 'fontSize': '16px', 'fontWeight': '600'}),
                 html.P("Showing data for all provinces (% children under 5)", style={'fontSize': '13px', 'color': '#718096', 'margin': '0 0 20px 0'})
             ]),
-            dcc.Graph(id='province-chart', config={'displayModeBar': False})
+            dcc.Graph(id='province-chart', config={'displayModeBar': False, 'responsive': False}, style={'height': '280px'})
         ], className="chart-card", style={'flex': '1'}),
         
         # Trend over time
@@ -218,7 +218,7 @@ charts_section = html.Div([
                 html.H3("Has there been any significant change?", style={'margin': '0 0 15px 0', 'fontSize': '16px', 'fontWeight': '600'}),
                 html.P("Trend analysis with predictions", style={'fontSize': '13px', 'color': '#718096', 'margin': '0 0 20px 0'})
             ]),
-            dcc.Graph(id='trend-chart', config={'displayModeBar': False})
+            dcc.Graph(id='trend-chart', config={'displayModeBar': False, 'responsive': False}, style={'height': '280px'})
         ], className="chart-card", style={'flex': '1'}),
     ], style={'display': 'flex', 'gap': '20px', 'marginBottom': '20px'}),
     
@@ -230,7 +230,7 @@ charts_section = html.Div([
                 html.H3("High-Risk Districts", style={'margin': '0 0 15px 0', 'fontSize': '16px', 'fontWeight': '600'}),
                 html.P("Districts with stunting rates above 35%", style={'fontSize': '13px', 'color': '#718096', 'margin': '0 0 20px 0'})
             ]),
-            dcc.Graph(id='districts-chart', config={'displayModeBar': False})
+            dcc.Graph(id='districts-chart', config={'displayModeBar': False, 'responsive': False}, style={'height': '400px'})
         ], className="chart-card", style={'flex': '2'}),
         
         # Key insights
@@ -412,6 +412,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: #F7FAFC;
     color: #2D3748;
+    overflow: hidden;
 }
 
 .sidebar {
@@ -468,9 +469,10 @@ body {
     padding: 30px 40px;
     min-height: 100vh;
     transition: margin-left 0.25s ease;
+    overflow: auto;
 }
 
-.sidebar:hover ~ .main-content { margin-left: 260px; }
+.sidebar:hover ~ .main-content { margin-left: 70px; }
 
 .header {
     background: white;
